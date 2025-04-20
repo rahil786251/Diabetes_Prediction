@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Prediction</title>
+  <style>
+    /* Same styling for body, form, etc. */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+      text-align: left;
+    }
+    input[type="number"] {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input[type="submit"], .bmi-button {
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    input[type="submit"]:hover, .bmi-button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Diabetes Prediction</h1>
+    <form action="/predict" method="POST">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="bmi">BMI:</label>
+      <input type="number" step="0.1" id="bmi" name="bmi" required>
+
+      <label for="skin_thickness">Skin Thickness:</label>
+      <input type="number" id="skin_thickness" name="skin_thickness" required>
+
+      <div class="buttons">
+        <input type="submit" value="Predict Diabetes">
+        <a href="{{ url_for('bmi') }}" class="bmi-button">Calculate BMI</a>
+      </div>
+    </form>
+
+    {% if prediction %}
+      <div class="result">
+        Prediction Result: {{ prediction }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
