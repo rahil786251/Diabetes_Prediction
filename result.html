@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Tips</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    ul {
+      text-align: left;
+      margin-top: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if prediction == 1 %}
+      <h1>You have Diabetes</h1>
+      <h2>Here are some tips for managing your health:</h2>
+      <ul>
+        <li>Maintain a healthy diet (low sugar, high fiber)</li>
+        <li>Exercise regularly (at least 30 minutes/day)</li>
+        <li>Monitor your blood sugar levels frequently</li>
+        <li>Stay hydrated and avoid sugary drinks</li>
+        <li>Take medications properly if prescribed</li>
+        <li>Manage stress through yoga or meditation</li>
+      </ul>
+    {% else %}
+      <h1>You don't have Diabetes</h1>
+      <h2>Tips to stay healthy:</h2>
+      <ul>
+        <li>Eat a balanced diet (fruits, veggies, whole grains)</li>
+        <li>Exercise regularly and stay active</li>
+        <li>Maintain a healthy weight</li>
+        <li>Limit processed and sugary foods</li>
+        <li>Go for regular health checkups</li>
+        <li>Stay positive and stress-free</li>
+      </ul>
+    {% endif %}
+    <a href="{{ url_for('home') }}">Go Back to Home</a>
+  </div>
+</body>
+</html>
